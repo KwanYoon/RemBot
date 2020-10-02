@@ -5,6 +5,10 @@ client = commands.Bot(command_prefix = '.')
 
 @client.event
 async def on_ready():
-    print('Bot is ready')
+    print('Bot is ready.')
+
+@client.command()
+async def ping(ctx):
+    await ctx.send('Pong!')
 
 client.run('NDA1ODkyMDExMTYyMzM3Mjgz.WmkuZA.0dkWXVxX6wISApWCLYd3-4EVZEM')
