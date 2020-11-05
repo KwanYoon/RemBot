@@ -1,20 +1,18 @@
 import discord
 from discord.ext import commands
 
-client = commands.Bot(command_prefix = '.')
+bot = commands.Bot(command_prefix = '.')
 
-@client.event
+@bot.event
 async def on_ready():
     print('Bot is ready.')
 
-@client.command()
-async def ping(ctx):
-    await ctx.send('Pong!')
+@bot.command()
+async def add(ctx, num1: float, num2: float):
+    await ctx.send(num1 + num2)
 
-@client.event
-async def on_message(message):
-    channel = message.channel
-    if message.content.startswith('@405892011162337283'):
-        await client.send.send_message(channel, 'hehe')
+@bot.command()
+async def sub(ctx, num1: float, num2: float):
+    await ctx.send(num1 - num2)
 
-client.run('NDA1ODkyMDExMTYyMzM3Mjgz.WmkuZA.0dkWXVxX6wISApWCLYd3-4EVZEM')
+bot.run('NDA1ODkyMDExMTYyMzM3Mjgz.WmkuZA.0dkWXVxX6wISApWCLYd3-4EVZEM')
