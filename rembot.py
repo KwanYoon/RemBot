@@ -33,22 +33,23 @@ async def reddit(ctx, subr: str, toptype: str, num: int):
     elif (toptype == "top"):
         for submission in red.subreddit(subr).top(limit=num):
             embedVar = discord.Embed(title="Title", description=submission.title, color=0xadd8e6)
-            embedVar.add_field(name="URL", value=submission.url, inline=False)
+            embedVar.add_field(name="URL", value="[Submission Link](https://reddit.com"+submission.permalink+")", inline=False)
             embedVar.set_image(url=submission.url)
             await ctx.send(embed=embedVar)
     elif (toptype == "new"):
         for submission in red.subreddit(subr).new(limit=num):
             embedVar = discord.Embed(title="Title", description=submission.title, color=0xadd8e6)
-            embedVar.add_field(name="URL", value=submission.url, inline=False)
+            embedVar.add_field(name="URL", value="[Submission Link](https://reddit.com"+submission.permalink+")", inline=False)
             embedVar.set_image(url=submission.url)
             await ctx.send(embed=embedVar)
     elif (toptype == "hot"):
         for submission in red.subreddit(subr).hot(limit=num):
             embedVar = discord.Embed(title="Title", description=submission.title, color=0xadd8e6)
-            embedVar.add_field(name="URL", value=submission.url, inline=False)
+            embedVar.add_field(name="URL", value="[Submission Link](https://reddit.com"+submission.permalink+")", inline=False)
             embedVar.set_image(url=submission.url)
             await ctx.send(embed=embedVar)
     else:
         await ctx.send("Input is \".reddit subreddit type(top, new, hot) number\"")
+
 
 bot.run('NDA1ODkyMDExMTYyMzM3Mjgz.WmkuZA.0dkWXVxX6wISApWCLYd3-4EVZEM')
