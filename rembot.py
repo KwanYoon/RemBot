@@ -25,6 +25,10 @@ async def sub(ctx, num1: float, num2: float):
     await ctx.send(num1 - num2)
 
 @bot.command()
+async def add(ctx, num1: float, num2: float):
+    await ctx.sent (num1 * num2)
+
+@bot.command()
 async def reddit(ctx, subr: str, toptype: str, num: int):
     if num > 10 or num < 1:
         await ctx.send("Number has to be 1 ~ 10!")
