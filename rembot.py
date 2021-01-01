@@ -3,10 +3,11 @@ from discord.ext import commands
 import time
 import praw
 import urllib3
+import tokens
 
 red = praw.Reddit(
-     client_id="RlzWM0NK17wdOQ",
-     client_secret="mBs-_oP_lK7IxTaGJlgtiWlkGStILw",
+     client_id=tokens.cid,
+     client_secret=tokens.csecret,
      user_agent="discord:RemBotv1.0:(By /u/rKeWdAiNt)"
  )
 
@@ -56,4 +57,4 @@ async def reddit(ctx, subr: str, toptype: str, num: int):
         await ctx.send("Input is \".reddit subreddit type(top, new, hot) number\"")
 
 
-bot.run('NDA1ODkyMDExMTYyMzM3Mjgz.WmkuZA.0dkWXVxX6wISApWCLYd3-4EVZEM')
+bot.run(tokens.bot_token)
