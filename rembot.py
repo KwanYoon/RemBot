@@ -1,9 +1,10 @@
 import discord
 from discord.ext import commands
+import tokens
 import time
 import praw
 import urllib3
-import tokens
+
 
 red = praw.Reddit(
      client_id=tokens.cid,
@@ -11,25 +12,25 @@ red = praw.Reddit(
      user_agent="discord:RemBotv1.0:(By /u/rKeWdAiNt)"
  )
 
-bot = commands.Bot(command_prefix = '.')
+client = commands.Bot(command_prefix = '.')
 
-@bot.event
+@client.event
 async def on_ready():
     print(red.read_only)
 
-@bot.command()
+@client.command()
 async def add(ctx, num1: float, num2: float):
     await ctx.send(num1 + num2)
 
-@bot.command()
+@client.command()
 async def sub(ctx, num1: float, num2: float):
     await ctx.send(num1 - num2)
 
-@bot.command()
+@client.command()
 async def add(ctx, num1: float, num2: float):
     await ctx.sent (num1 * num2)
 
-@bot.command()
+@client.command()
 async def reddit(ctx, subr: str, toptype: str, num: int):
     if num > 10 or num < 1:
         await ctx.send("Number has to be 1 ~ 10!")
@@ -56,5 +57,9 @@ async def reddit(ctx, subr: str, toptype: str, num: int):
     else:
         await ctx.send("Input is \".reddit subreddit type(top, new, hot) number\"")
 
+@client.event
+async def on_message(message):
+    await message.delete()
 
-bot.run(tokens.bot_token)
+
+client.run(tokens.bot_token)
