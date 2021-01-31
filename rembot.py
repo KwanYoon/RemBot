@@ -1,14 +1,14 @@
 import discord
 from discord.ext import commands
-import tokens
+import os
 import time
 import praw
 import urllib3
 
 
 red = praw.Reddit(
-     client_id=tokens.cid,
-     client_secret=tokens.csecret,
+     client_id=os.getenv('cid'),
+     client_secret=os.getenv('csecret'),
      user_agent="discord:RemBotv1.0:(By /u/rKeWdAiNt)"
  )
 
@@ -27,7 +27,7 @@ async def sub(ctx, num1: float, num2: float):
     await ctx.send(num1 - num2)
 
 @client.command()
-async def add(ctx, num1: float, num2: float):
+async def mult(ctx, num1: float, num2: float):
     await ctx.sent (num1 * num2)
 
 @client.command()
@@ -59,7 +59,9 @@ async def reddit(ctx, subr: str, toptype: str, num: int):
 
 @client.event
 async def on_message(message):
+  if message.author.id == 234002911632293890 or message.author.id == 385909824623476740:
+    await message.channel.send("quiet tuna")
     await message.delete()
+  
 
-
-client.run(tokens.bot_token)
+client.run(os.getenv('TOKEN'))
